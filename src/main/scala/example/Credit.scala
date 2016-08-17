@@ -51,7 +51,7 @@ object Credit {
     import sqlContext.implicits._
 
     val creditDF = parseRDD(sc.textFile("germancredit.csv")).map(parseCredit).toDF().cache()
-
+    creditDF.registerTempTable("credit")
     creditDF.printSchema
 
     creditDF.show
